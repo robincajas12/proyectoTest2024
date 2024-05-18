@@ -20,4 +20,5 @@ function main({PORT}) : void
     });  
 }
 
-main({PORT:3000});
+const PORT = process.env.ENVIROMENT === 'development' ? process.env.PORT : 3000;
+main({PORT:PORT});
