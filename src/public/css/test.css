@@ -1,0 +1,80 @@
+/* Color Palette */
+
+:root {
+    --primary-color: #4a90e2; /* Dodger Blue */
+    --secondary-color: #ff7675; /* Pastel Red */
+    --background-color: #f4f1de; /* Creamy Yellow */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#test {
+    width: 100%;
+    max-width: 400px; /* Adjust as needed */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* White */
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+#questions {
+    background-color: #f9f9f9; /* Light Gray */
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#questions div {
+    margin-bottom: 15px;
+}
+
+input[type="radio"] {
+    /* Commented out display: none; */
+    /* display: none; */
+}
+
+input[type="radio"] + label {
+    display: inline-block; /* Changed from block to inline-block */
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="radio"] + label:before {
+    content: '';
+    display: inline-block; /* Changed from block to inline-block */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-color); /* Dodger Blue */
+    border-radius: 50%;
+}
+
+input[type="radio"]:checked + label:before {
+    background-color: var(--secondary-color); /* Pastel Red */
+    border-color: var(--secondary-color); /* Pastel Red */
+}
+
+/* Optional: Style for selected label text */
+input[type="radio"]:checked + label {
+    color: var(--secondary-color); /* Pastel Red */
+}
+
+/* Media query for mobile-first approach */
+@media only screen and (min-width: 600px) {
+    #test {
+        max-width: 600px;
+    }
+}
