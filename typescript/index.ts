@@ -12,6 +12,7 @@ function main({PORT}) : void
     const io : ServerIO = new ServerIO(server);
     app.set('view engine', 'ejs');
     app.set('PORT', PORT)
+    app.use(express.urlencoded({extended:true}))
     app.use(express.static('src/public'))
     app.use(homeRouter);
     app.use(testRouter);
