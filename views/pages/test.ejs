@@ -2,7 +2,27 @@
 <div id="test">
     <div id="questions">
         <form method="post">
-            <div><%=questions[0].question%></div>
+            <% questions.forEach((question, i) => { %>
+                <% console.log(question.getQuestionType()); %>
+                <% console.log(question.getQuestion()); %>
+                <% if(question.getQuestionType() === 'MultipleChoice') { %>
+                    <div><%= question.getQuestion() %></div>
+                    <% question.getOptions().forEach((option, j) => { %>
+                        <div>
+                            <input type="checkbox" name="answer<%= i %>" value="<%= option.getId() %>"> 
+                            <%= option.getAnswer() %>
+                        </div>
+                    <% }) %>
+                <% } else if(question.getQuestionType() === 'Boolean') { %>
+                    <div><%= question.getQuestion() %></div>
+                    <div>
+                        <div><input type="radio" name="answer<%= i %>" value="true"> True</div>
+                        <div><input type="radio" name="answer<%= i %>" value="false"> False</div>
+                    </div>
+                <% } %>
+            <% }) %>
+            <button type="submit">Submit</button>
+            
         </form>
          
     </div>
