@@ -1,24 +1,117 @@
-const questions = [
-    { question: "Do you prefer spending time alone or with others?", id: "Q1" },
-    { question: "When making decisions, do you rely more on logic and reason or on your feelings and values?", id: "Q2" },
-    { question: "Do you tend to focus on the present moment or on future possibilities?", id: "Q3" },
-    { question: "Are you more organized and methodical, or do you prefer flexibility and spontaneity?", id: "Q4" },
-    { question: "Would you describe yourself as more reserved or outgoing?", id: "Q5" },
-    { question: "Do you prefer to follow established rules and procedures, or do you like to improvise and find your own way?", id: "Q6" },
-    { question: "When solving problems, do you prefer to work alone or collaborate with others?", id: "Q7" },
-    { question: "Do you enjoy exploring new ideas and possibilities, or do you prefer to stick with what you know?", id: "Q8" },
-    { question: "Are you more comfortable with facts and concrete details, or do you prefer to focus on the big picture and possibilities?", id: "Q9" },
-    { question: "Do you tend to be more realistic and practical, or do you often daydream and think about the future?", id: "Q10" },
-    { question: "When making plans, do you prefer to have a clear schedule or leave things open-ended?", id: "Q11" },
-    { question: "Are you more focused on achieving tangible results or on personal growth and development?", id: "Q12" },
-    { question: "Do you prefer to communicate in a direct and straightforward manner, or do you tend to be more diplomatic and tactful?", id: "Q13" },
-    { question: "Are you more comfortable with routine and stability, or do you thrive on change and new experiences?", id: "Q14" },
-    { question: "Do you prefer to work in a structured and organized environment, or do you thrive in a more flexible and spontaneous setting?", id: "Q15" },
-    { question: "When faced with a problem, do you prefer to analyze it carefully and weigh all the options, or do you trust your instincts and go with your gut feeling?", id: "Q16" },
-    { question: "Do you prefer to have a few close relationships or a wide circle of acquaintances?", id: "Q17" },
-    { question: "Are you more comfortable in familiar surroundings, or do you enjoy exploring new places and trying new things?", id: "Q18" },
-    { question: "Do you prefer to stick with tried-and-true methods, or do you enjoy experimenting and trying new approaches?", id: "Q19" },
-    { question: "When learning something new, do you prefer to follow a step-by-step process or figure things out as you go along?", id: "Q20" }
-];
 
+interface QuestionType
+{
+    getQuestionType() : String;
+}
+export class Answer
+{
+    id : String;
+    answer : String;
+    isCorrect : Boolean;
+    constructor(id : String, answer : String, isCorrect : Boolean)
+    {
+        this.answer = answer;
+        this.id = id;
+        this.isCorrect = isCorrect;
+    }
+    getAnswer()
+    {
+        return this.answer;
+    }
+    getId()
+    {
+        return this.id;
+    }
+    getIsCorrect()
+    {
+        return this.isCorrect;
+    }
+}
+
+export class Question{
+    question : String;
+    id  : String;
+    answer : Answer;
+    constructor(id : String, question: String, answer: Answer){
+        this.id = id;
+        this.question  = question;
+        this.answer = answer;
+    }
+    getQuestion()
+    {
+        return this.question;
+    }
+    getAnswer()
+    {
+        return this.answer;
+    }
+    getId()
+    {
+        return this.id;
+    }
+    getQuestionType(): String {
+        return 'Question';
+    }
+}
+export class MultipleChoiceQuestion extends Question
+{
+    options : Answer[];
+    constructor(id: String, question: String, options: Answer[]){
+        super(id, question, null);
+        this.options = options;
+    }
+    getQuestionType(): String {
+        return 'MultipleChoice';
+    }
+    getOptions()
+    {
+        return this.options;
+    } 
+    getCorrectOptions()
+    {
+        this.options.filter(option => {
+            option.getIsCorrect();
+        });
+    }
+}
+export class BooleanQuestion extends Question
+{
+    constructor(id: String, question: String, answer: Boolean){
+        super(id, question, new Answer('0',answer.toString() , answer));
+    }
+    getQuestionType(): String {
+        return 'Boolean'
+    }
+}
+
+const questions : Question[] = [
+    new MultipleChoiceQuestion('1', "What is my favorite Color?", [
+        new Answer('1', 'Red', false),
+        new Answer('2', 'Green', false),
+        new Answer('3', 'Blue', true)
+    ]),
+    new BooleanQuestion('2', 'Is my favorite Color Red?', true),
+    new BooleanQuestion('3', 'Is my favorite Color Green?', false),
+        new MultipleChoiceQuestion('1', "What is the capital of Japan?", [
+            new Answer('1', 'Tokyo', true),
+            new Answer('2', 'Kyoto', false),
+            new Answer('3', 'Osaka', false),
+            new Answer('4', 'Seoul', false)
+        ]),
+        new BooleanQuestion('2', 'Is water composed of two hydrogen atoms and one oxygen atom?', true),
+        new BooleanQuestion('3', 'Is Pluto considered a planet?', false),
+        new MultipleChoiceQuestion('4', "Who wrote 'Romeo and Juliet'?", [
+            new Answer('1', 'William Shakespeare', true),
+            new Answer('2', 'Charles Dickens', false),
+            new Answer('3', 'Jane Austen', false),
+            new Answer('4', 'Leo Tolstoy', false)
+        ]),
+        new BooleanQuestion('5', 'Is the Amazon river the longest river in the world?', false),
+        new MultipleChoiceQuestion('6', "What is the chemical symbol for gold?", [
+            new Answer('1', 'Au', true),
+            new Answer('2', 'Ag', false),
+            new Answer('3', 'Fe', false),
+            new Answer('4', 'Cu', false)
+        ])    
+ ];
 export default questions;

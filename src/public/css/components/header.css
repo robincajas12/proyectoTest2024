@@ -1,0 +1,27 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+#header
+{
+    background-color: var(--background-color);
+    padding: 1.5rem 15%;
+    border-bottom: 5px solid var(--primary-color);
+}
+#header ul
+{
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    gap: 3%;
+}
+#header ul li
+{
+    padding: 0%;
+}
+#header ul li a
+{
+    text-decoration: none;
+    color: var(--primary-color)
+}

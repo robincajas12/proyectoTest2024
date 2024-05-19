@@ -2,15 +2,9 @@
 <div id="test">
     <div id="questions">
         <form method="post">
-            <% for (let i = 0; i < questions.length; i++) { %>
-                <div>
-                <%= questions[i].question %></div>
-                <% for (let j = 0; j < 5; j++) { %>
-                    <input type="radio" name="<%= questions[i].id %>" value="<%= j + 1 %>">
-                <% } %>
-            <% } %>  
+            <div><%=questions[0].question%></div>
         </form>
-        
+         
     </div>
 </div>
 <%- include('../components/footer')%>
