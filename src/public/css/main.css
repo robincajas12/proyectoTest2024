@@ -22,3 +22,30 @@ form button:focus{
     color: var(--secondary-color);
     border-bottom: 0.3rem solid var(--background-color);
 }
+
+
+
+
+
+.episode-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.episode-card img {
+    border-radius: 8px;
+    max-width: 150px;
+    margin-right: 20px;
+}
+.episode-card h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+.episode-card p {
+    margin: 5px 0;
+}

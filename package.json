@@ -18,9 +18,11 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@carlosnunezmx/animeflv": "^1.1.1",
     "@types/express": "^4.17.21",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "mongoose": "^8.4.1",
     "socket.io": "^4.7.5"
   }
 }

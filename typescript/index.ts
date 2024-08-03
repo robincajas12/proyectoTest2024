@@ -5,9 +5,9 @@ import profileRouter from './controllers/profileController.js';
 import {Server  as ServerIO} from 'socket.io';
 import http from  'http';
 import { Server } from 'http';
-
 function main({PORT}) : void
 {
+
     const app = express();
     const server : Server = http.createServer(app);
     const io : ServerIO = new ServerIO(server);
